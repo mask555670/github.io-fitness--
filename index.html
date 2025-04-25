@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Фитнес-Трекер</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="progress-container">
+                <h1>Мой Прогресс</h1>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <p class="motivation-text" id="motivation-text">Ты на правильном пути!</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <nav class="nav-tabs">
+                <button class="tab-btn active" data-tab="measurements"><i class="fas fa-tape"></i> Замеры</button>
+                <button class="tab-btn" data-tab="workouts"><i class="fas fa-dumbbell"></i> Тренировки</button>
+                <button class="tab-btn" data-tab="stats"><i class="fas fa-chart-line"></i> Статистика</button>
+            </nav>
+
+            <section id="measurements" class="tab-content active">
+                <form id="measurement-form">
+                    <h2><i class="fas fa-plus-circle"></i> Новый замер</h2>
+                    <div class="form-group">
+                        <label for="measurement-date">Дата:</label>
+                        <input type="date" id="measurement-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Вес (кг):</label>
+                        <input type="number" id="weight" step="0.1" min="30" max="200" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="waist">Талия (см):</label>
+                        <input type="number" id="waist" step="0.1" min="50" max="150" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="biceps">Бицепс (см):</label>
+                        <input type="number" id="biceps" step="0.1" min="10" max="60">
+                    </div>
+                    <div class="form-group">
+                        <label for="thigh">Бедро (см):</label>
+                        <input type="number" id="thigh" step="0.1" min="30" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="hips">Ягодицы (см):</label>
+                        <input type="number" id="hips" step="0.1" min="50" max="150">
+                    </div>
+                    <div class="form-group">
+                        <label for="chest">Грудь (см):</label>
+                        <input type="number" id="chest" step="0.1" min="50" max="150">
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Рост (см):</label>
+                        <input type="number" id="height" step="0.1" min="100" max="250">
+                    </div>
+                    <button type="submit" class="submit-btn">Сохранить замер</button>
+                </form>
+
+                <div class="measurements-list">
+                    <h2><i class="fas fa-history"></i> История замеров</h2>
+                    <ul id="measurements-list"></ul>
+                </div>
+            </section>
+
+            <section id="workouts" class="tab-content">
+                <form id="workout-form">
+                    <h2><i class="fas fa-plus-circle"></i> Новая тренировка</h2>
+                    <div class="form-group">
+                        <label for="workout-date">Дата:</label>
+                        <input type="date" id="workout-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="workout-type">Тип тренировки:</label>
+                        <select id="workout-type" required>
+                            <option value="strength">Силовая</option>
+                            <option value="cardio">Кардио</option>
+                            <option value="flexibility">Гибкость</option>
+                        </select>
+                    </div>
+                    
+                    <div id="exercises-container">
+                        <!-- Упражнения будут добавляться здесь -->
+                    </div>
+                    
+                    <button type="button" id="add-exercise" class="add-btn">
+                        <i class="fas fa-plus"></i> Добавить упражнение
+                    </button>
+                    <button type="submit" class="submit-btn">Сохранить тренировку</button>
+                </form>
+
+                <div class="workouts-list">
+                    <h2><i class="fas fa-history"></i> История тренировок</h2>
+                    <ul id="workouts-list"></ul>
+                </div>
+            </section>
+
+            <section id="stats" class="tab-content">
+                <div class="stats-container">
+                    <h2><i class="fas fa-chart-pie"></i> Ваша статистика</h2>
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <h3>Последний вес</h3>
+                            <p id="last-weight">-</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Изменение веса</h3>
+                            <p id="weight-change">-</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Всего тренировок</h3>
+                            <p id="total-workouts">0</p>
+                        </div>
+                    </div>
+                    <canvas id="progress-chart"></canvas>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p id="daily-motivation">"Сегодня - лучший день для нового рекорда!"</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

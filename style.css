@@ -1,0 +1,369 @@
+:root {
+  --primary: #4361ee;
+  --secondary: #3f37c9;
+  --accent: #4895ef;
+  --success: #4cc9f0;
+  --danger: #f72585;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --gray: #6c757d;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+              url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  line-height: 1.6;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+.progress-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: white;
+  width: 0%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.motivation-text {
+  font-style: italic;
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+.nav-tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--gray);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.tab-btn i {
+  margin-right: 8px;
+}
+
+.tab-btn.active {
+  color: var(--primary);
+  border-bottom: 3px solid var(--primary);
+  font-weight: 600;
+}
+
+.tab-content {
+  display: none;
+  background: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  box-shadow: var(--box-shadow);
+  color: var(--dark);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+}
+
+.submit-btn, .add-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+.tab-btn, 
+.submit-btn, 
+.add-btn {
+    min-height: 44px; /* Минимальный размер для сенсорных устройств */
+    touch-action: manipulation; /* Улучшает отзывчивость */
+}
+
+.submit-btn {
+  background-color: var(--primary);
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: var(--secondary);
+}
+
+.add-btn {
+  background-color: white;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.add-btn:hover {
+  background-color: rgba(67, 97, 238, 0.1);
+}
+
+.measurements-list, .workouts-list {
+  margin-top: 30px;
+}
+
+.measurements-list h2, .workouts-list h2 {
+  margin-bottom: 15px;
+  color: var(--dark);
+}
+
+#measurements-list, #workouts-list {
+  list-style: none;
+}
+
+#measurements-list li, #workouts-list li {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.measurement-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.measurement-values span {
+  font-size: 0.9rem;
+  color: var(--dark);
+}
+
+.measurement-date, .workout-date {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.exercise {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.exercise input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+}
+
+.remove-exercise-btn {
+  background: var(--danger);
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.stat-card {
+  background: white;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin-bottom: 5px;
+}
+
+.stat-card p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 15px;
+  color: white;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .nav-tabs {
+    flex-direction: column;
+}
+.tab-btn {
+    padding: 12px 5px;
+    font-size: 0.8rem;
+}
+  .app-container {
+      padding: 10px;
+  }
+  
+  .tab-btn {
+      padding: 12px 5px;
+      font-size: 0.8rem;
+  }
+  
+  .tab-content {
+      padding: 15px;
+  }
+  
+  .exercise {
+      flex-direction: column;
+      gap: 5px;
+  }
+  
+  .stats-cards {
+      grid-template-columns: 1fr;
+  }
+  
+  .measurement-values {
+      grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .form-group input, 
+  .form-group select {
+      padding: 15px;
+      font-size: 16px; /* Увеличиваем для удобства на мобильных */
+  }
+  
+  .exercise {
+      flex-direction: column;
+  }
+  
+  .exercise input {
+      width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .submit-btn, 
+  .add-btn {
+      padding: 15px;
+      min-height: 50px;
+  }
+  
+  .delete-btn {
+      width: 40px;
+      height: 40px;
+  }
+}
+@media (max-width: 600px) {
+  #measurements-list li, 
+  #workouts-list li {
+      flex-direction: column;
+      gap: 10px;
+  }
+  
+  .measurement-values {
+      grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .stats-cards {
+      grid-template-columns: 1fr;
+  }
+  
+  .stat-card {
+      padding: 20px;
+  }
+}
